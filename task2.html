@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TASK2 - Inventory Management</title>
+</head>
+<body>
+    <h1>Inventory Management</h1>
+
+    <label for="productList">Product List (JSON format):</label>
+    <textarea id="productList" rows="5" cols="50"></textarea>
+    <br>
+
+    <label for="sortKey">Sort Key:</label>
+    <select id="sortKey">
+        <option value="name">Name</option>
+        <option value="price">Price</option>
+        <option value="stock">Stock</option>
+    </select>
+    <br>
+
+    <label for="sortOrder">Sort Order:</label>
+    <select id="sortOrder">
+        <option value="ascending">Ascending</option>
+        <option value="descending">Descending</option>
+    </select>
+    <br>
+
+    <button id="sortButton">Sort</button>
+
+    <h2>Sorted Product List:</h2>
+    <div id="sortedList"></div>
+
+    <script src="sorter.js"></script>
+</body>
+</html>

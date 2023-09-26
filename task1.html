@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TASK1-LOGGER</title>
+</head>
+<body>
+    <h1>Log Messages</h1>
+
+    <label for="logFileName">Log File Name:</label>
+    <input type="text" id="logFileName" placeholder="Enter log file name">
+    <br>
+
+    <label for="logMessage">Log Message:</label>
+    <input type="text" id="logMessage" placeholder="Enter log message">
+    <br>
+
+    <label for="logLevel">Log Level:</label>
+    <select id="logLevel">
+        <option value="INFO">INFO</option>
+        <option value="WARNING">WARNING</option>
+        <option value="ERROR">ERROR</option>
+    </select>
+    <br>
+
+    <!-- Add the 'disabled' attribute initially -->
+    <button onclick="logMessage()" id="logButton" disabled>Log</button>
+    
+    <!-- Botão "Log Folder" -->
+    <button id="logFolderButton">Log Folder</button>
+
+    <!-- Add the "Run Tests" button here -->
+    <button onclick="runTests()">Run Tests</button>
+
+    <h2>Log Output</h2>
+    <div id="logOutput"></div>
+    <script src="./utility/openLogFolder.js" defer></script>
+    <script src="logger.js" defer></script>
+    <script src="./utility/bundle.js" defer></script>
+    <script>
+        function toggleLogButton() {
+            const logFileName = document.getElementById("logFileName").value;
+            const logMessage = document.getElementById("logMessage").value;
+            const logLevel = document.getElementById("logLevel").value;
+            const logButton = document.getElementById("logButton");
+
+            if (logFileName.trim() !== "" && logMessage.trim() !== "" && logLevel.trim() !== "") {
+                logButton.removeAttribute("disabled");
+            } else {
+                logButton.setAttribute("disabled", "disabled");
+            }
+        }
+
+        // Add event listeners to input fields to check when they change
+        document.getElementById("logFileName").addEventListener("input", toggleLogButton);
+        document.getElementById("logMessage").addEventListener("input", toggleLogButton);
+        document.getElementById("logLevel").addEventListener("change", toggleLogButton);
+
+        // Call the toggleLogButton function initially to set the initial state of the button
+        toggleLogButton();
+
+        // Add event listener for "Log Folder" button
+        document.getElementById("logFolderButton").addEventListener("click", function () {
+            openLogFolder();
+        });
+    </script>
+</body>
+</html>

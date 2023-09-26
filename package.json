@@ -1,0 +1,41 @@
+{
+  "name": "test_js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start-servers\" \"npm run open-browser\"",
+    "start-server": "cd utility && node server.js",
+    "start-http-server": "npx http-server -p 8080",
+    "start-test": "npx wdio wdio.conf.js && npm run test-report",
+    "test-report": "allure generate --clean && allure open",
+    "start-servers": "concurrently \"npm run start-http-server\" \"npm run start-server\"",
+    "test": "concurrently \"npm run start-servers\" \"npm run start-test\"",
+    "open-browser": "start http://localhost:8080/task1.html && start http://localhost:8080/task2.html",
+    "wdio": "wdio run ./wdio.conf.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@wdio/allure-reporter": "^8.16.12",
+    "@wdio/cli": "^8.16.12",
+    "@wdio/cucumber-framework": "^8.16.12",
+    "@wdio/local-runner": "^8.16.12",
+    "@wdio/spec-reporter": "^8.16.12",
+    "allure-commandline": "^2.24.0",
+    "chai": "^4.3.8",
+    "concurrently": "^8.2.1",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "core-js": "^3.32.2"
+  },
+  "dependencies": {
+    "allure-cucumberjs": "^2.8.1",
+    "axios": "^1.5.0",
+    "browserify": "^17.0.0",
+    "child_process": "^1.0.2",
+    "wdio-allure-reporter": "^0.8.3",
+    "uuid": "^7.0.0"
+  }
+}
